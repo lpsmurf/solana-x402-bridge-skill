@@ -12,6 +12,9 @@ opportunity is on another chain — settle an invoice on Base, a market on Polyg
 Arbitrum. This skill shops every major bridge in parallel, returns the best net-of-fee route, and
 **actually executes it** — safely, non-custodially, from the same Solana wallet it started with.
 
+**It works both ways** — bridge out (Solana → EVM) *and* back (EVM → Solana). The full round trip
+is proven on mainnet (see [Proof](#proof)).
+
 Works with [Claude Code](https://claude.ai/code), Codex, and the [SendAI Solana Agent Kit](https://github.com/sendaifun/solana-agent-kit).
 
 ![Cross-chain round trip demo](./demo/roundtrip.gif)
@@ -33,10 +36,12 @@ PATH or runs in the background. Or run in place: `npm install && cp .env.example
 npm run quote   USDC 100 ethereum USDC    # best route + ranked comparison + free-vs-paid verdict
 npm run quote   SOL 1 polygon USDC        # cross-chain swap (any-token)
 npm run health  solana                    # RPC health + automatic failover
-npm run execute USDC 5 polygon USDC       # preview; add --confirm to broadcast (non-custodial)
+npm run execute USDC 5 polygon USDC       # bridge OUT (Solana -> EVM); preview, --confirm to broadcast
+npm run return  5                         # bridge BACK (EVM -> Solana); preview, --confirm to broadcast
 ```
 
-Every flow starts from a Solana wallet; EVM chains are reached through the bridge.
+Every flow starts from a Solana wallet; EVM chains are reached through the bridge — and the funds
+can come straight back.
 
 ## What it does
 
