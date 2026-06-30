@@ -1,0 +1,7 @@
+node_modules/
+.env
+dist/
+# demo media (only the curated demo gif is tracked)
+*.gif
+*.mp4
+!demo/roundtrip.gif
